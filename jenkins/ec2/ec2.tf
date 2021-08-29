@@ -1,6 +1,5 @@
 provider "aws" {
   region                  = "ap-south-1"
-  profile                  = "vishesh"
 }
 
 resource "aws_default_vpc" "default" {
@@ -54,33 +53,34 @@ resource "aws_security_group" "secure" {
   }
 }
 
-resource "aws_instance" "task19m" {
+resource "aws_instance" "k8s-master" {
   ami           = "ami-0bcf5425cdc1d8a85"
   instance_type = "t2.micro"
-  key_name = "aayushikey"
-  #user_data = "fd50d738924f03fa08bbabe03058dcdcd20d0986"
+  key_name = "jenkins-master-key"
+
   security_groups = [ "${aws_security_group.secure.name}" ]
   tags = {
     Name = "Master"
   }
 }
 
-resource "aws_instance" "task19s" {
+resource "aws_instance" "k8s-slave" {
   ami = "ami-0bcf5425cdc1d8a85"
   instance_type = "t2.micro"
-  key_name = "aayushikey"
+  key_name = "jenkins-master-key"
   #count = 1
-  #user_data = "fd50d738924f03fa08bbabe03058dcdcd20d0986"
   security_groups = [ "${aws_security_group.secure.name}" ]
   tags = {
     Name = "Slaves"
   }
 }
 
-# # Creating a Local file, which contains Public IP's of our Cluster INstanc`es
+# Creating a Local file, which contains Public IP's of our Cluster INstanc`es
  resource "local_file" "ipfile" {
-     content = "[aws] \n${aws_instance.task19m.public_ip}  ansible_user=ec2-user  \n\n [aws1] \n${aws_instance.task19s.public_ip} ansible_user=ec2-user"
+     content = "[aws] \n${aws_instance.k8s-master.public_ip}  ansible_user=ec2-user  \n\n [aws1] \n${aws_instance.k8s-slave.public_ip} ansible_user=ec2-user"
      filename = "ip.txt"
  }
 
-
+ output "ip_data" {
+    value = "[aws] \n${aws_instance.k8s-master.public_ip}  ansible_user=ec2-user  \n\n[aws1] \n${aws_instance.k8s-slave.public_ip} ansible_user=ec2-user"
+}
