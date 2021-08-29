@@ -1,5 +1,1 @@
-[aws] 
-13.127.155.161  ansible_user=ec2-user  
-
- [aws1] 
-65.0.80.176 ansible_user=ec2-user
+**/ip.txt
