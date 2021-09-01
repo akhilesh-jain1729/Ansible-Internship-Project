@@ -1,8 +1,0 @@
-[aws] 
-65.0.135.218 ansible_user=ec2-user  
-
-[aws1] 
-52.66.121.196 ansible_user=ec2-user 
- 
-[azure]
-20.197.29.108 ansible_user=akhil
