@@ -1,7 +1,20 @@
 variable "repo_name" {}
-#variable "repo_url" {}
+variable "repo_url" {}
 variable "token" {}
 variable "ipdata" {}
+variable "azure_ip_data" {}
+
+#Uploading Content to Github
+resource "github_repository_file" "file" {
+  repository          = var.repo_name
+  branch              = "main"
+  file                = "ip.txt"
+  content             = "${var.ipdata} \n${var.azure_ip_data}"
+  commit_author       = "Akhilesh Jain"
+  commit_email        = "akhileshjain9221@gmail.com"
+  commit_message      = "Ansible Inventory file updated"
+  overwrite_on_create = true
+}
 
 
 # resource "null_resource" "nulllocal1"  {
@@ -60,15 +73,3 @@ variable "ipdata" {}
 # 	    command = "git push origin master"
 #   	}
 # }
-
-#Uploading Content to Github
-resource "github_repository_file" "file" {
-  repository          = var.repo_name
-  branch              = "main"
-  file                = "ip.txt"
-  content             = var.ipdata
-  commit_message      = "Ansible Inventory file updated"
-  commit_author       = "Akhilesh Jain"
-  commit_email        = "akhileshjain9221@gmail.com"
-  overwrite_on_create = true
-}
