@@ -1,0 +1,8 @@
+[aws_master] 
+65.0.131.212 ansible_user=ec2-user  
+
+[aws_slave] 
+13.233.136.18 ansible_user=ec2-user 
+ 
+[azure_slave]
+20.198.5.149 ansible_user=akhil
