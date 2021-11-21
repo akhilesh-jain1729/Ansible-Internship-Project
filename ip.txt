@@ -1,8 +1,0 @@
-[aws_master] 
-65.2.123.91 ansible_user=centos  
-
-[aws_slave] 
-3.110.135.175 ansible_user=centos 
- 
-[azure_slave]
-40.80.86.186 ansible_user=akhil
