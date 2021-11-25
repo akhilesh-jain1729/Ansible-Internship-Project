@@ -8,5 +8,5 @@
 52.172.235.24 ansible_user=akhil
 
 [slaves:children]
-[aws_slave]
-[azure_slave]
+aws_slave
+azure_slave
