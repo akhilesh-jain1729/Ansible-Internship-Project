@@ -6,3 +6,7 @@
  
 [azure_slave]
 20.197.63.235 ansible_user=akhil
+
+[slaves]
+65.2.122.42 ansible_user=centos 
+20.197.63.235 ansible_user=akhil ansible_become_password=Akhil29@
