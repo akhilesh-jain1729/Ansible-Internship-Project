@@ -1,6 +1,6 @@
 variable "token" {
   type = string
-  default = "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"
+  default = "your_token"
   description = "Token for authentication"
 }
 
