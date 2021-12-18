@@ -6,13 +6,13 @@ variable "token" {
 
 variable "aws_access_key" {
   type = string
-  default = "AKIAUZEYQZ7AGOIQ3WTJ"
+  default = ""
   description = "Access key in AWS"
 }
 
 variable "aws_secret_access_key" {
   type = string
-  default = "uWgg3th4sxjpy8COVemHC6i65mIj52bYGGIfi33H"
+  default = ""
   description = "Secret Access key in AWS"
 }
 
@@ -42,26 +42,26 @@ variable "key_name" {
 
 variable "subscription_id" {
   type = string
-  default  = "6c8c8a7b-6023-4b39-8f24-f8aa195e268b"
+  default  = ""
   description = "Subscription ID in my Azure"
 }
 
   
 variable "tenant_id"  {
   type = string
-  default  = "ade53179-a4d7-4e27-ab4b-f418b77cd9ca"
+  default  = ""
   description = "Tenant ID/Directory ID in my Azure"
   }  
 
 variable "client_id" {
   type = string
-  default   = "0a3e05a9-ef20-4842-99f9-005709eac1f6"
+  default   = ""
   description = "Client ID in my Azure"
 }
       
 variable "client_secret" {
   type = string
-  default = "m16Bdvi1_X.Eeru~f2yFg~gh9DWa-BwG9a"
+  default = ""
   description = "Client Secret in my Azure"
 }
 
