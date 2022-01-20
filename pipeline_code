@@ -1,0 +1,26 @@
+pipeline {
+//    agent any
+
+    stages {
+	 stage('Creating Infrastructure') {
+        node('terraform_node') {
+            dir('/terraform_codes/') {
+               steps {
+                	sh 'terraform init'
+	           	 sh 'terraform plan'
+	         	   sh 'terraform apply --auto-approve'
+            }
+            }
+	    }
+   }
+   stage('Configuring Cluster') {
+        node('ansible_node') {
+            dir('/ansible_codes/') {
+		        steps{
+		        	ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'create_cluster_from_scratch.yml'
+	                	}	
+                 }
+        	}
+         }
+    }
+}
