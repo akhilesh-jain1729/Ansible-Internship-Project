@@ -1,0 +1,12 @@
+[aws_master]
+13.126.75.16 ansible_user=centos
+
+[aws_slave1]
+13.233.121.140 ansible_user=centos
+
+[azure_slave1]
+20.192.0.252 ansible_user=akhil ansible_become_password=Akhil29@
+
+[slaves:children]
+aws_slave1
+azure_slave1
